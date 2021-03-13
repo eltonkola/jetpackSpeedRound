@@ -17,27 +17,62 @@ package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.androiddevchallenge3.R
 
 // Set of Material typography styles to start with
-val typography = Typography(
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+
+private val Montserrant = FontFamily(
+    listOf(
+        Font(R.font.montserrat_bold, FontWeight.Bold),
+        Font(R.font.montserrat_extrabold, FontWeight.ExtraBold),
+        Font(R.font.montserrat_light, FontWeight.Light),
+        Font(R.font.montserrat_medium, FontWeight.Medium),
+        Font(R.font.montserrat_semibold, FontWeight.SemiBold),
     )
-        /* Other default text styles to override
+)
+
+val typography = Typography(
+    h1 = TextStyle(
+        fontFamily = Montserrant,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 42.sp,
+        letterSpacing = 1.25.sp
+    ),
+    h2 = TextStyle(
+        fontFamily = Montserrant,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 36.sp,
+        letterSpacing = 0.sp
+    ),
+    h3 = TextStyle(
+        fontFamily = Montserrant,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 13.sp,
+        letterSpacing = 0.sp
+    ),
+    subtitle1 = TextStyle(
+        fontFamily = Montserrant,
+        fontWeight = FontWeight.Medium,
+        fontSize = 15.sp,
+        letterSpacing = 0.sp
+    ),
+    body1 = TextStyle(
+        fontFamily = Montserrant,
+        fontWeight = FontWeight.Light,
+        fontSize = 13.sp,
+        letterSpacing = 0.sp
+    ),
     button = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.W500,
-        fontSize = 14.sp
-    ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+        fontSize = 13.sp,
+        letterSpacing = 1.25.sp,
+
+        // TODO - make it all caps
+
     )
-    */
 )

@@ -20,34 +20,33 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-
-private val DarkColorPalette = darkColors(
-    primary = purple200,
-    primaryVariant = purple700,
-    secondary = teal200
-)
-
-private val LightColorPalette = lightColors(
-    primary = purple500,
-    primaryVariant = purple700,
-    secondary = teal200
-
-        /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
-)
+import androidx.compose.ui.res.colorResource
+import com.example.androiddevchallenge3.R
 
 @Composable
-fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun WeTradeTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable() () -> Unit
+) {
+
     val colors = if (darkTheme) {
-        DarkColorPalette
+        darkColors(
+            primary = colorResource(id = R.color.primary_dark),
+            onPrimary = colorResource(id = R.color.on_primary_dark),
+            background = colorResource(id = R.color.background_dark),
+            surface = colorResource(id = R.color.surface_dark),
+            onBackground = colorResource(id = R.color.on_background_dark),
+            onSurface = colorResource(id = R.color.on_surface_dark),
+        )
     } else {
-        LightColorPalette
+        lightColors(
+            primary = colorResource(id = R.color.primary_light),
+            onPrimary = colorResource(id = R.color.on_primary_light),
+            background = colorResource(id = R.color.background_light),
+            surface = colorResource(id = R.color.surface_light),
+            onBackground = colorResource(id = R.color.on_background_light),
+            onSurface = colorResource(id = R.color.on_surface_light),
+        )
     }
 
     MaterialTheme(

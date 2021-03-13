@@ -10,11 +10,26 @@
   the License.
   -->
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_light">#E3DA00</color>
+    <color name="on_primary_light">#232323</color>
+    <color name="background_light">#322049</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="on_background_light">#FFFFFF</color>
+    <color name="on_surface_light">#232323</color>
+
+    <color name="custom_1">#39A844</color>
+    <color name="custom_2">#D93C19</color>
+
+    <color name="primary_dark">#E3DA00</color>
+    <color name="on_primary_dark">#232323</color>
+    <color name="background_dark">#232323</color>
+    <color name="surface_dark">#2D2D2D</color>
+    <color name="on_background_dark">#FFFFFF</color>
+    <color name="on_surface_dark">#FFFFFF</color>
+
+
+
+    <color name="transparent">#00000000</color>
+
 </resources>

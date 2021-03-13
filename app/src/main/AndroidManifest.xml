@@ -11,7 +11,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.androiddevchallenge">
+    package="com.example.androiddevchallenge3">
 
     <application
         android:allowBackup="true"
