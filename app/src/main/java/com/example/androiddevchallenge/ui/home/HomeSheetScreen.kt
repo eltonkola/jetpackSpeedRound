@@ -16,6 +16,12 @@
 package com.example.androiddevchallenge.ui.home
 
 import android.app.Activity
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -32,16 +38,17 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.statusBarColor
 import com.example.androiddevchallenge.ui.theme.WeTradeTheme
 import com.example.androiddevchallenge3.R
 import com.example.androiddevchallenge3.R.string
@@ -71,44 +78,65 @@ val positions = listOf(
 @Composable
 fun HomeSheetScreen(expanded: Boolean) {
 
-    (LocalContext.current as Activity).statusBarColor(!expanded, isSystemInDarkTheme())
+    val statusBarHeight by animateDpAsState(
+        targetValue = if( (isSystemInDarkTheme() && !expanded) || !expanded) 32.dp else 0.dp,
+        animationSpec = tween(
+            durationMillis = 300,
+            delayMillis = 50,
+            easing = LinearOutSlowInEasing
+        )
+    )
 
-    val topPadding = if( isSystemInDarkTheme() && !expanded) 32.dp else 0.dp
+
 
     Surface(color = MaterialTheme.colors.surface) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 16.dp, end = 16.dp)
         ) {
-
             Box(
                 modifier = Modifier
-                    .fillMaxWidth().padding(top = topPadding)
-                    .height(60.dp),
-                contentAlignment = Alignment.Center
+                    .fillMaxWidth()
+                    .height(statusBarHeight)
+                    .fillMaxWidth()
+                    .background(if (isSystemInDarkTheme()) Color.Transparent else Color.Gray)
+
             ) {
 
-                Text(
-                    style = MaterialTheme.typography.body2,
-                    text = stringResource(id = string.home_positions),
-                    textAlign = Center,
-                )
             }
 
-            Divider(
+            Column(
                 modifier = Modifier
-                    .height(1.dp)
-                    .background(MaterialTheme.colors.onSurface)
-            )
+                    .fillMaxSize()
+                    .padding(start = 16.dp, end = 16.dp)
+            ) {
+                Box(
+                    modifier = Modifier.fillMaxWidth()
+                        .height(60.dp),
+                    contentAlignment = Alignment.Center
+                ) {
 
-            positions.forEach {
-                PositionView(it)
+                    Text(
+                        style = MaterialTheme.typography.body2,
+                        text = stringResource(id = string.home_positions),
+                        textAlign = Center,
+                    )
+                }
+
                 Divider(
                     modifier = Modifier
                         .height(1.dp)
                         .background(MaterialTheme.colors.onSurface)
                 )
+
+                positions.forEach {
+                    PositionView(it)
+                    Divider(
+                        modifier = Modifier
+                            .height(1.dp)
+                            .background(MaterialTheme.colors.onSurface)
+                    )
+                }
             }
         }
     }

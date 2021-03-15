@@ -47,14 +47,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-fun Activity.statusBarColor(expanded: Boolean, isDark: Boolean) {
-    window.clearFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS)
-    window.addFlags(LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-    if (expanded && !isDark) {
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-    } else {
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-    }
-    window.statusBarColor = if (expanded && !isDark) Color.WHITE else Color.TRANSPARENT
-}
