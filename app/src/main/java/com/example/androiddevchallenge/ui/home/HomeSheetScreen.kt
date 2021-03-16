@@ -15,12 +15,8 @@
  */
 package com.example.androiddevchallenge.ui.home
 
-import android.app.Activity
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -42,7 +38,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -79,16 +74,14 @@ val positions = listOf(
 fun HomeSheetScreen(expanded: Boolean) {
 
     val statusBarHeight by animateDpAsState(
-        targetValue = if( (isSystemInDarkTheme() && !expanded) || !expanded) 32.dp else 0.dp,
+        targetValue = if ((isSystemInDarkTheme() && !expanded) || !expanded) 32.dp else 0.dp,
         animationSpec = tween(
             durationMillis = 300,
             delayMillis = 50,
-            easing = LinearOutSlowInEasing
+            easing = LinearOutSlowInEasing,
         )
     )
-
-
-
+    val statusBackground = if (isSystemInDarkTheme()) Color.Transparent else Color.Gray
     Surface(color = MaterialTheme.colors.surface) {
         Column(
             modifier = Modifier
@@ -98,11 +91,8 @@ fun HomeSheetScreen(expanded: Boolean) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(statusBarHeight)
-                    .fillMaxWidth()
-                    .background(if (isSystemInDarkTheme()) Color.Transparent else Color.Gray)
-
+                    .background(statusBackground),
             ) {
-
             }
 
             Column(
@@ -111,7 +101,8 @@ fun HomeSheetScreen(expanded: Boolean) {
                     .padding(start = 16.dp, end = 16.dp)
             ) {
                 Box(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .height(60.dp),
                     contentAlignment = Alignment.Center
                 ) {

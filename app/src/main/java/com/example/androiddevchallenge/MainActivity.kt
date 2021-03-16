@@ -15,18 +15,14 @@
  */
 package com.example.androiddevchallenge
 
-import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager.LayoutParams
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.ExperimentalMaterialApi
 import com.example.androiddevchallenge.ui.MainAppScreen
 import com.example.androiddevchallenge.ui.theme.WeTradeTheme
-import com.example.androiddevchallenge3.R
 
 class MainActivity : AppCompatActivity() {
 
